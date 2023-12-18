@@ -1,6 +1,14 @@
-import { ChevronRightIcon } from '@heroicons/react/20/solid'
+'use client';
 
-export default function Example() {
+import { ChevronRightIcon } from '@heroicons/react/20/solid';
+import SearchBar from './components/SearchBar';
+
+
+export default function Home() {
+  function handleSearch(query: string): void {
+    throw new Error('Function not implemented.');
+  }
+
   return (
     <div className="relative isolate overflow-hidden">
       <svg
@@ -87,6 +95,7 @@ export default function Example() {
             />
           </div>
         </div>
+        <SearchBar onSearch={handleSearch} />
       </div>
     </div>
   )
