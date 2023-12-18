@@ -6,7 +6,7 @@ export default function LoginPage() {
     const [password, setPassword] = useState('');
 
     const handleLogin = async () => {
-        const { user, error } = await supabase.auth.signInWithPassword({
+        const { data, error } = await supabase.auth.signInWithPassword({
             email,
             password,
         });
@@ -14,7 +14,7 @@ export default function LoginPage() {
         if (error) {
             console.error('Error signing in:', error.message);
         } else {
-            console.log('User signed in successfully:', user);
+            console.log('User signed in successfully:', data);
             // Redirect to the dashboard or any other page
         }
     };
