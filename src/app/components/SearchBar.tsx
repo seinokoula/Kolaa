@@ -1,3 +1,5 @@
+'use client';
+
 import React, { FC, useState } from 'react';
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
 import { FaceFrownIcon, GlobeAmericasIcon } from '@heroicons/react/24/outline';
