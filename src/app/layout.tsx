@@ -139,7 +139,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <div className="flex lg:flex-1">
                   <Link href="/" className="-m-1.5 p-1.5">
                     <span className="sr-only">Open Tech</span>
-                    <Image width={350} height={350} className="h-8 w-auto" src="https://svgl.vercel.app/library/tor.svg" alt="" />
+                    <Image width={350} height={350} className="h-8 w-auto" src="https://svgl.vercel.app/library/rowy.svg" alt="" />
                   </Link>
                 </div>
                 <div className="flex lg:hidden">
@@ -158,13 +158,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                       <Link href="profile" className="text-sm font-semibold leading-6">Profile</Link>
                     </div>
                     <div>
-                      <Link href="tuto" className="text-sm font-semibold leading-6">Tuto</Link>
+                      <Link href="faq" className="text-sm font-semibold leading-6">faq</Link>
+                    </div>
+                    <div>
+                      <Link href="roadmap" className="text-sm font-semibold leading-6">Roadmap</Link>
                     </div>
                   </Popover.Group>
                 </div>
                 <div className="flex gap-x-4">
                   <Link href="signup" className="text-sm font-semibold leading-6 ring-2 ring-gray-500 rounded-md px-3 py-2">Sign Up</Link>
-                  <Link href="login" className="text-sm font-semibold leading-6">Log In</Link>
+                  <Link href="login" className="text-sm font-semibold leading-6 py-2">Log In</Link>
                 </div>
               </nav>
 
@@ -173,12 +176,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-slate-400 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
                   <div className="flex items-center justify-between">
                     <Link href="#" className="-m-1.5 p-1.5">
-                      <span className="sr-only">RWA</span>
+                      <span className="sr-only">Open Teck</span>
                       <Image
                         width={350}
                         height={350}
                         className="h-8 w-auto"
-                        src="https://svgl.vercel.app/library/tor.svg"
+                        src="https://svgl.vercel.app/library/rowy.svg"
                         alt=""
                       />
                     </Link>
@@ -204,7 +207,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                           href="market"
                           className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:bg-gray-50"
                         >
-                          tuto
+                          faq
                         </Link>
                         <Link
                           href="signup"
@@ -240,7 +243,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 </Dialog.Panel>
               </Dialog>
             </header>
-            <main className="flex-auto md:mx-16 lg:mx-48">{children}</main>
+            <main className="flex-auto md:mx-16 lg:mx-36">{children}</main>
             <footer aria-labelledby="footer-heading">
               <h2 id="footer-heading" className="sr-only">
                 Footer
@@ -252,7 +255,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                       width={350}
                       height={350}
                       className="h-7"
-                      src="https://svgl.vercel.app/library/tor.svg"
+                      src="https://svgl.vercel.app/library/rowy.svg"
                       alt="Company name"
                     />
                     <p className="text-sm leading-6">

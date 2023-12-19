@@ -1,35 +1,115 @@
 'use client';
 
-import { useState } from 'react';
+import { Fragment, useState } from 'react'
+import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
+import { FaceFrownIcon, GlobeAmericasIcon } from '@heroicons/react/24/outline'
+import { Combobox, Dialog, Transition } from '@headlessui/react'
 
-interface SearchBarProps {
-  onSearch: (query: string) => void;
+const items = [
+  { id: 1, name: 'Workflow Inc.', category: 'Clients', url: '#' },
+  { id: 24, name: 'Workflow2 Inc.', category: 'Projects', url: '#' },
+  { id: 2, name: 'Blogging 101', category: 'Projects', url: '#' },
+  { id: 3, name: 'Sales Presentation', category: 'Projects', url: '#' },
+  { id: 4, name: 'UX Improvements', category: 'Projects', url: '#' },
+  { id: 5, name: 'Engineering Blog', category: 'Internal', url: '#' },
+  { id: 6, name: 'Customer Interviews', category: 'Internal', url: '#' },
+  { id: 7, name: 'Product Strategy', category: 'Internal', url: '#' },
+  { id: 8, name: 'Q4 Planning', category: 'Internal', url: '#' },
+  { id: 9, name: 'Customer Interviews', category: 'Internal', url: '#' },
+  { id: 10, name: 'Product Strategy', category: 'Internal', url: '#' },
+  { id: 11, name: 'Q4 Planning', category: 'Internal', url: '#' },
+  { id: 12, name: 'Customer Interviews', category: 'Internal', url: '#' },
+  { id: 13, name: 'Product Strategy', category: 'Internal', url: '#' },
+  { id: 14, name: 'Q4 Planning', category: 'Internal', url: '#' },
+  { id: 15, name: 'Customer Interviews', category: 'Internal', url: '#' },
+  { id: 16, name: 'Product Strategy', category: 'Internal', url: '#' },
+  { id: 17, name: 'Q4 Planning', category: 'Internal', url: '#' },
+  { id: 18, name: 'Customer Interviews', category: 'Internal', url: '#' },
+  { id: 19, name: 'Product Strategy', category: 'Internal', url: '#' },
+  { id: 20, name: 'Q4 Planning', category: 'Internal', url: '#' },
+  { id: 21, name: 'Customer Interviews', category: 'Internal', url: '#' },
+  { id: 22, name: 'Product Strategy', category: 'Internal', url: '#' },
+  { id: 23, name: 'Q4 Planning', category: 'Internal', url: '#' },
+]
+
+function classNames(...classes: (string | boolean)[]) {
+  return classes.filter(Boolean).join(' ')
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
-  const [query, setQuery] = useState('');
+export default function Example() {
+  const [query, setQuery] = useState('')
+  const [open, setOpen] = useState(true)
+  const [inputFocused, setInputFocused] = useState(false)
 
-  const handleSearch = () => {
-    onSearch(query);
-  };
+  const filteredItems =
+    query === ''
+      ? []
+      : items.filter((item) => {
+          return item.name.toLowerCase().includes(query.toLowerCase())
+        })
+
+  const groups = filteredItems.reduce((groups, item) => {
+    return { ...groups, [item.category]: [...(groups[item.category] || []), item] }
+  }, {})
 
   return (
-    <div className="mt-6 flex items-center gap-x-6">
-      <input
-        type="text"
-        placeholder="Rechercher..."
-        className="p-2 border border-gray-300 rounded"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-      />
-      <button
-        className="rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400"
-        onClick={handleSearch}
-      >
-        Rechercher
-      </button>
-    </div>
-  );
-};
+    <div className='relative'>
+      <Combobox onChange={(item) => (window.location = item.url)}>
+        <div className="relative">
+          <MagnifyingGlassIcon
+            className="pointer-events-none absolute left-4 top-3.5 h-5 w-5 text-gray-400"
+            aria-hidden="true"
+          />
+          <Combobox.Input
+            className="h-12 w-full border-2 border-white rounded-full bg-transparent pl-11 pr-4 text-white placeholder:text-gray-400 focus:ring-0 sm:text-sm"
+            placeholder="Search..."
+            onChange={(event) => setQuery(event.target.value)}
+            onFocus={() => setInputFocused(true)}
+            onBlur={() => setInputFocused(false)}
+          />
+        </div>
 
-export default SearchBar;
+        {query === ''  && inputFocused && (
+          <div className="border-t rounded-lg border-gray-100 px-6 py-14 text-center text-sm sm:px-14 w-full absolute bg-white z-10">
+            <GlobeAmericasIcon className="mx-auto h-6 w-6 text-gray-400" aria-hidden="true" />
+            <p className="mt-4 font-semibold text-gray-900">Search for clients and projects</p>
+            <p className="mt-2 text-gray-500">
+              Quickly access clients and projects by running a global search.
+            </p>
+          </div>
+        )}
+
+        {filteredItems.length > 0 && inputFocused && (
+          <Combobox.Options static className="max-h-80 rounded-lg scroll-pb-2 scroll-pt-11 space-y-2 overflow-y-auto pb-2 bg-white absolute w-full z-10">
+            {Object.entries(groups).map(([category, items]) => (
+              <li key={category}>
+                <h2 className="bg-gray-100 px-4 py-2.5 text-xs font-semibold text-gray-900">{category}</h2>
+                <ul className="mt-2 text-sm text-gray-800">
+                  {items.map((item) => (
+                    <Combobox.Option
+                      key={item.id}
+                      value={item}
+                      className={({ active }) =>
+                        classNames('cursor-pointer select-none px-4 py-2', active && 'bg-indigo-600 text-white')
+                      }
+                    >
+                      {item.name}
+                    </Combobox.Option>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </Combobox.Options>
+        )}
+
+        {query !== '' && filteredItems.length === 0 && inputFocused && (
+          <div className="border-t border-gray-100 rounded-lg px-6 py-14 text-center text-sm bg-white absolute w-full z-10 sm:px-14">
+            <FaceFrownIcon className="mx-auto h-6 w-6 text-gray-400" aria-hidden="true" />
+            <p className="mt-4 font-semibold text-gray-900">No results found</p>
+            <p className="mt-2 text-gray-500">We couldn’t find anything with that term. Please try again.</p>
+          </div>
+        )}
+      </Combobox>
+    </div>
+  )
+}
