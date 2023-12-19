@@ -1,11 +1,16 @@
-'use client';
+import React, { FC, useState } from 'react';
+import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
+import { FaceFrownIcon, GlobeAmericasIcon } from '@heroicons/react/24/outline';
+import { Combobox, Dialog, Transition } from '@headlessui/react';
 
-import { Fragment, useState } from 'react'
-import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
-import { FaceFrownIcon, GlobeAmericasIcon } from '@heroicons/react/24/outline'
-import { Combobox, Dialog, Transition } from '@headlessui/react'
+interface Item {
+  id: number;
+  name: string;
+  category: string;
+  url: string;
+}
 
-const items = [
+const items: Item[] = [
   { id: 1, name: 'Workflow Inc.', category: 'Clients', url: '#' },
   { id: 24, name: 'Workflow2 Inc.', category: 'Projects', url: '#' },
   { id: 2, name: 'Blogging 101', category: 'Projects', url: '#' },
@@ -30,31 +35,35 @@ const items = [
   { id: 21, name: 'Customer Interviews', category: 'Internal', url: '#' },
   { id: 22, name: 'Product Strategy', category: 'Internal', url: '#' },
   { id: 23, name: 'Q4 Planning', category: 'Internal', url: '#' },
-]
+];
 
-function classNames(...classes: (string | boolean)[]) {
-  return classes.filter(Boolean).join(' ')
+function classNames(...classes: (string | boolean)[]): string {
+  return classes.filter(Boolean).join(' ');
 }
 
-export default function Example() {
-  const [query, setQuery] = useState('')
-  const [open, setOpen] = useState(true)
-  const [inputFocused, setInputFocused] = useState(false)
+const Example: FC = () => {
+  const [query, setQuery] = useState<string>('');
+  const [open, setOpen] = useState<boolean>(true);
+  const [inputFocused, setInputFocused] = useState<boolean>(false);
 
-  const filteredItems =
+  const filteredItems: Item[] =
     query === ''
       ? []
-      : items.filter((item) => {
-          return item.name.toLowerCase().includes(query.toLowerCase())
-        })
+      : items.filter((item: Item) => {
+          return item.name.toLowerCase().includes(query.toLowerCase());
+        });
 
-  const groups = filteredItems.reduce((groups, item) => {
-    return { ...groups, [item.category]: [...(groups[item.category] || []), item] }
-  }, {})
+  const groupedItems: { [key: string]: Item[] } = {};
+  filteredItems.forEach((item: Item) => {
+    if (!groupedItems[item.category]) {
+      groupedItems[item.category] = [];
+    }
+    groupedItems[item.category].push(item);
+  });
 
   return (
     <div className='relative'>
-      <Combobox onChange={(item) => (window.location = item.url)}>
+      <Combobox onChange={(selectedItem: Item) => { window.location.href = selectedItem.url }}>
         <div className="relative">
           <MagnifyingGlassIcon
             className="pointer-events-none absolute left-4 top-3.5 h-5 w-5 text-gray-400"
@@ -81,7 +90,7 @@ export default function Example() {
 
         {filteredItems.length > 0 && inputFocused && (
           <Combobox.Options static className="max-h-80 rounded-lg scroll-pb-2 scroll-pt-11 space-y-2 overflow-y-auto pb-2 bg-white absolute w-full z-10">
-            {Object.entries(groups).map(([category, items]) => (
+            {Object.entries(groupedItems).map(([category, items]) => (
               <li key={category}>
                 <h2 className="bg-gray-100 px-4 py-2.5 text-xs font-semibold text-gray-900">{category}</h2>
                 <ul className="mt-2 text-sm text-gray-800">
@@ -103,7 +112,7 @@ export default function Example() {
         )}
 
         {query !== '' && filteredItems.length === 0 && inputFocused && (
-          <div className="border-t border-gray-100 rounded-lg px-6 py-14 text-center text-sm bg-white absolute w-full z-10 sm:px-14">
+          <div className="border-t border-gray-100  px-6 py-14 text-center text-sm bg-white absolute w-full z-10 sm:px-14">
             <FaceFrownIcon className="mx-auto h-6 w-6 text-gray-400" aria-hidden="true" />
             <p className="mt-4 font-semibold text-gray-900">No results found</p>
             <p className="mt-2 text-gray-500">We couldn’t find anything with that term. Please try again.</p>
@@ -111,5 +120,7 @@ export default function Example() {
         )}
       </Combobox>
     </div>
-  )
+  );
 }
+
+export default Example;
