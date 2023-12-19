@@ -5,18 +5,18 @@ import { supabase } from '../components/Server/supabase'
 
 const AuthContext = createContext({})
 
-export const AuthContextProvider = ({ children }) => {
+export const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
     const [user, setUser] = useState(false)
     const onAuthStateChange = async () => {
-        try {
-            const {
-                data: { user },
-            } = await supabase.auth.getUser();
-            if (user) {
-                setUser(user);
-            }   
-        } catch (error) {
-            console.log(error);
+    try {
+        const {
+            data: { user },
+        } = await supabase.auth.getUser();
+        if (user) {
+            setUser(!!user);
+        }   
+    } catch (error) {
+        console.log(error);
         } finally {}
     }
 
