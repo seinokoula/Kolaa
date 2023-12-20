@@ -23,14 +23,14 @@ export default function Example() {
                             Découvrez notre RoadMap innovante pour un aperçu complet des améliorations et des fonctionnalités passionnantes à venir.
                         </p>
                     </div>
-                    <div className='flex gap-16 my-12 justify-center'>
+                    <div className='flex gap-16 my-12 max-lg:flex-col justify-center'>
                         <div className="w-full lg:max-w-lg lg:flex-auto">
                             <Image
                                 width={1344}
                                 height={1104}
                                 src="https://images.unsplash.com/photo-1606857521015-7f9fcf423740?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1344&h=1104&q=80"
                                 alt=""
-                                className=" aspect-[6/5] w-full rounded-2xl bg-gray-50 object-cover lg:aspect-auto lg:h-[34.5rem]"
+                                className=" aspect-[6/5] w-full rounded-2xl bg-gray-50 object-cover md:min-w-32 md:min-h-full lg:aspect-auto lg:h-[34.5rem]"
                             />
                         </div>
                         <nav aria-label="Progress" className='flex items-center'>

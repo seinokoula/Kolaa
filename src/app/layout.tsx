@@ -1,6 +1,8 @@
 'use client';
 
 import './globals.css';
+import gsap from 'gsap';
+import barba from '@barba/core';
 import { Fragment, JSX, SVGProps, useState } from 'react';
 import { useEffect } from 'react';
 import { ChevronRightIcon } from '@heroicons/react/20/solid'
@@ -19,6 +21,18 @@ import {
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
 import DarkMode from './components/DarkMode';
+
+// barba.init({
+//   transitions: [{
+//     name: 'basic',
+//     leave() {
+//       // create your stunning leave animation here
+//     },
+//     enter() {
+//       // create your amazing enter animation here
+//     }
+//   }]
+// });
 
 const products = [
   { name: 'Analytics', description: 'Get Link better understanding of your traffic', href: '#', icon: ChartPieIcon },
@@ -131,7 +145,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <html>
-      <body>
+      <body data-barba="wrapper">
         <ThemeProvider enableSystem={true} attribute="class">
           <div>
             <header className="">
@@ -158,7 +172,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                       <Link href="profile" className="text-sm font-semibold leading-6">Profile</Link>
                     </div>
                     <div>
-                      <Link href="faq" className="text-sm font-semibold leading-6">faq</Link>
+                      <Link href="faq" className="text-sm font-semibold leading-6">Faq</Link>
                     </div>
                     <div>
                       <Link href="roadmap" className="text-sm font-semibold leading-6">Roadmap</Link>
@@ -207,7 +221,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                           href="market"
                           className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:bg-gray-50"
                         >
-                          faq
+                          Faq
                         </Link>
                         <Link
                           href="signup"
@@ -243,7 +257,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 </Dialog.Panel>
               </Dialog>
             </header>
-            <main className="flex-auto md:mx-16 lg:mx-36">{children}</main>
+            <main data-barba="container" data-barba-namespace="basic" className="flex-auto md:mx-16 lg:mx-36">{children}</main>
             <footer aria-labelledby="footer-heading">
               <h2 id="footer-heading" className="sr-only">
                 Footer
