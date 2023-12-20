@@ -1,4 +1,5 @@
 import { CheckIcon } from '@heroicons/react/20/solid'
+import { motion } from 'framer-motion'
 import Image from 'next/image'
 
 const steps = [

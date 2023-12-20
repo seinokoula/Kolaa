@@ -13,8 +13,10 @@ const SignUp = () => {
             }
             // Handle successful signup
             console.log('User signed up:', data);
+            alert('your account has been created, an email has been send')
         } catch (error) {
             console.log('Error signing up:', error);
+            alert('error')
         }
     };
 

@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@barba/core": "^2.9.7",
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",
     "@supabase/auth-helpers-nextjs": "^0.8.7",
@@ -17,7 +16,7 @@
     "@supabase/auth-ui-shared": "^0.1.8",
     "@supabase/supabase-js": "^2.39.0",
     "@tailwindcss/forms": "^0.5.7",
-    "gsap": "^3.12.4",
+    "framer-motion": "^10.16.16",
     "install": "^0.13.0",
     "million": "^2.6.4",
     "next": "14.0.4",

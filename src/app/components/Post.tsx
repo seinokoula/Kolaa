@@ -27,12 +27,14 @@ function PostForm(_props: any) {
         });
 
         const { data, error } = await supabase.from('post').insert({
-            description,
-            title,
-            link
+            description: description,
+            title: title,
+            link: link,
+            profil_id: access_token,
         });
-        console.log(data);
-
+        console.log(access_token, refresh_token)
+        console.log(data, error);
+// user id to profile id et on insert le profil id
         if (error) {
             console.log(error);
         } else {

@@ -1,8 +1,7 @@
 'use client';
 
 import './globals.css';
-import gsap from 'gsap';
-import barba from '@barba/core';
+import { animate, motion,scroll } from 'framer-motion';
 import { Fragment, JSX, SVGProps, useState } from 'react';
 import { useEffect } from 'react';
 import { ChevronRightIcon } from '@heroicons/react/20/solid'
@@ -20,19 +19,12 @@ import {
   XMarkIcon,
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
-import DarkMode from './components/DarkMode';
 
-// barba.init({
-//   transitions: [{
-//     name: 'basic',
-//     leave() {
-//       // create your stunning leave animation here
-//     },
-//     enter() {
-//       // create your amazing enter animation here
-//     }
-//   }]
-// });
+const variants = {
+  hidden: { opacity: 0, x: -200, y: 0 },
+  enter: { opacity: 1, x: 0, y: 0 },
+}
+
 
 const products = [
   { name: 'Analytics', description: 'Get Link better understanding of your traffic', href: '#', icon: ChartPieIcon },
@@ -145,7 +137,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <html>
-      <body data-barba="wrapper">
+      <body>
         <ThemeProvider enableSystem={true} attribute="class">
           <div>
             <header className="">
@@ -166,8 +158,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     <Bars3Icon className="h-6 w-6" aria-hidden="true" />
                   </button>
                 </div>
-                <div className="flex lg:flex-1 justify-center">
-                  <Popover.Group className="lg:flex lg:gap-x-12">
+                <div className="flex flex-auto justify-center">
+                  <Popover.Group className="max-sm:invisible flex gap-x-12">
                     <div>
                       <Link href="profile" className="text-sm font-semibold leading-6">Profile</Link>
                     </div>
@@ -257,7 +249,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 </Dialog.Panel>
               </Dialog>
             </header>
-            <main data-barba="container" data-barba-namespace="basic" className="flex-auto md:mx-16 lg:mx-36">{children}</main>
+            <motion.main
+              variants={variants}
+              initial="hidden"
+              animate="enter"
+              transition={{ type: "linear" }}
+            >
+              <main data-barba="container" data-barba-namespace="basic" className="flex-auto md:mx-16 lg:mx-36">{children}</main>
+            </motion.main>
             <footer aria-labelledby="footer-heading">
               <h2 id="footer-heading" className="sr-only">
                 Footer

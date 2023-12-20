@@ -1,4 +1,5 @@
 import { ArrowPathIcon, CloudArrowUpIcon, FingerPrintIcon, LockClosedIcon } from '@heroicons/react/24/outline'
+import { motion } from "framer-motion"
 import SearchBar from '../app/components/SearchBar'
 import GetAllPost from '../app/components/GetAllPost'
 

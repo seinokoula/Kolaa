@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { supabase } from '../components/Server/supabase';
-import { useNavigate } from 'react-router-dom';
 
 export default function LoginPage() {
     const [email, setEmail] = useState('');
@@ -11,11 +10,11 @@ export default function LoginPage() {
 
     session.then((data) => {
         if (data) {
-            const user = data.data.session?.access_token;
+            const user = data.data.session?.user.id;
             const userRefresh = data.data.session?.refresh_token;
            // const userId = supabase.auth.getUser();
            // console.log('userid',userId);
-            console.log(userRefresh);
+            console.log(user);
             localStorage.setItem('user', user!);
             localStorage.setItem('userRefresh', userRefresh!);
           //  localStorage.setItem('userId', userId!);
@@ -30,9 +29,13 @@ export default function LoginPage() {
 
         if (error) {
             console.error('Error signing in:', error.message);
+            alert('error')
         } else {
             console.log('User signed in successfully:', data);
+            alert('you are logged In')
             // Redirect to the dashboard or any other page
+            window.location.href = '/'; // Replace '/dashboard' with your desired route
+
         }
     };
 
