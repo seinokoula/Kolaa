@@ -35,7 +35,7 @@ const features = [
 
 export default function Example() {
   return (
-    <div className="">
+    <div className="mw">
       <Header/>
       <SearchBar />
       <GetAllPost />

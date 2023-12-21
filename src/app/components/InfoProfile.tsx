@@ -2,6 +2,7 @@
 
 import { createClient } from '@supabase/supabase-js';
 import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_KEY;
@@ -46,15 +47,15 @@ function InfoProfile(_props: any) {
     }, [access_token, profile, lastFetchTime]);
 
     return (
-        <div className='mx-auto max-w-7xl px-6 sm:py-24 lg:px-8'>
+        <motion.div initial={{ x: 0 }} animate={{ rotate : 720 }} transition={{ ease: "easeOut", duration: 3}} className='mx-auto max-w-7xl px-6 sm:py-24 lg:px-8 gap-12 grid'>
+            <h2 className="text-4xl font-bold leading-10 tracking-tight">Account</h2>
             <h1 className='text-xl'>Name : </h1>
-            <p>{profile?.name}</p>
+            <p className='animate-bounce text-red-600 ml-8 font-bold text-4xl w-fit'>{profile?.name}</p>
             <h1 className='text-xl'>Description : </h1>
-            <p>{profile?.description}</p>
+            <p className='animate-bounce text-green-600 ml-16 font-bold text-4xl w-fit'>{profile?.description}</p>
             <h1 className='text-lg'>Location : </h1>
-            <p>{profile?.location}</p>
-        </div>
-
+            <p className='animate-bounce text-blue-600 ml-24 font-bold text-4xl w-fit'>{profile?.location}</p>
+        </motion.div>
     )
 }
 export default InfoProfile;

@@ -37,7 +37,7 @@ const Example: FC = () => {
 );
 
   return (
-    <div className='max-w-lg mx-auto px-4 text-center md:max-w-full md:px-8 max-w-7xl' id="feed">
+    <div className='mx-auto px-4 text-center md:max-w-7xl md:px-8 max-w-7xl' id="feed">
       <input
           className="peer h-12 w-full text-sm text-white pr-2 rounded-full bg-black"
           type="text"

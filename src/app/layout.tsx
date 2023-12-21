@@ -1,7 +1,7 @@
 'use client';
 
 import './globals.css';
-import { animate, motion,scroll } from 'framer-motion';
+import { animate, motion, scroll } from 'framer-motion';
 import { Fragment, JSX, SVGProps, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -140,22 +140,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [email, setEmail] = useState<string | undefined>('');
 
-const handleSignOut = async () => {
-  const { error } = await supabase.auth.signOut();
-  if (error) console.log('Error logging out:', error.message);
-  else alert('Logged out!');
-}
+  const handleSignOut = async () => {
+    const { error } = await supabase.auth.signOut();
+    if (error) console.log('Error logging out:', error.message);
+    else alert('Logged out!');
+  }
 
-const checkAuth = async () => {
-  try {
+  const checkAuth = async () => {
+    try {
       const authenticated = await supabase.auth.getUser()
       setEmail(authenticated?.data?.user?.email);
-     console.log(authenticated);
-  } catch (error) {
-    console.error("Erreur lors de la vérification de l'authentification :", error);
-  }
-};
-checkAuth();
+      console.log(authenticated);
+    } catch (error) {
+      console.error("Erreur lors de la vérification de l'authentification :", error);
+    }
+  };
+  checkAuth();
 
   return (
     <html>
@@ -163,7 +163,7 @@ checkAuth();
         <ThemeProvider enableSystem={true} attribute="class">
           <div>
             <header className="">
-              <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+              <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-12 lg:px-16" aria-label="Global">
                 <div className="flex">
                   <Link href="/" className="-m-1.5 p-1.5">
                     <span className="sr-only">Open Tech</span>
@@ -193,12 +193,12 @@ checkAuth();
                     </div>
                   </Popover.Group>
                 </div>
-                  <div className="flex gap-x-4">
-                    <Link href="signup" className="text-sm font-semibold leading-6 ring-2 ring-gray-500 rounded-md px-3 py-2">Sign Up</Link>
-                    <Link href="login" className="text-sm font-semibold leading-6 py-2">Log In</Link>
-                    <Link href="login" className="text-sm font-semibold leading-6 py-2" onClick={handleSignOut}>Log Out</Link>
-                    <p className='py-2'>{email}</p>
-                  </div>
+                <div className="flex gap-x-4">
+                  <Link href="signup" className="text-sm font-semibold leading-6 ring-2 ring-gray-500 rounded-md px-3 py-2">Sign Up</Link>
+                  <Link href="login" className="text-sm font-semibold leading-6 py-2">Log In</Link>
+                  <Link href="login" className="text-sm font-semibold leading-6 py-2" onClick={handleSignOut}>Log Out</Link>
+                  <p className='py-2'>{email}</p>
+                </div>
               </nav>
 
               <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
@@ -363,7 +363,7 @@ checkAuth();
                   </div>
                 </div>
                 <div className="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-24">
-                  <p className="text-xs leading-5 text-gray-500">&copy; 2024 Your Company, Inc. All rights reserved.</p>
+                  <p className="text-xs leading-5 text-gray-500">&copy; 2024 Not Twitter, Inc. All rights reserved.</p>
                 </div>
               </div>
             </footer>
