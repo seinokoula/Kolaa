@@ -4,7 +4,7 @@ import million from 'million/compiler';
 const nextConfig = {
     reactStrictMode: true,
     images: {
-        domains: ['localhost', 'images.unsplash.com', 'tailwindui.com', '1000logos.net', 'cdn.dribbble.com', 'cryptonaute.fr', 'cdn-icons-png.flaticon.com'],
+        domains: ['localhost', 'images.unsplash.com', 'tailwindui.com', '1000logos.net', 'cdn.dribbble.com', 'cryptonaute.fr', 'cdn-icons-png.flaticon.com', 'lkhayewnehhxhqkckehs.supabase.co'],
     },
 };
 

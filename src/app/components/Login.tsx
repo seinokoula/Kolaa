@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { supabase } from '../components/Server/supabase';
 
+
 export default function LoginPage() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [isConnected, setIsConnected] = useState(false);
 
 
     const session = supabase.auth.getSession();
@@ -35,7 +37,7 @@ export default function LoginPage() {
             alert('you are logged In')
             // Redirect to the dashboard or any other page
             window.location.href = '/'; // Replace '/dashboard' with your desired route
-
+            setIsConnected(true);
         }
     };
 

@@ -37,9 +37,9 @@ const Example: FC = () => {
 );
 
   return (
-    <div className='max-w-md mx-auto'>
+    <div className='max-w-lg mx-auto px-4 text-center md:max-w-full md:px-8 max-w-7xl' id="feed">
       <input
-          className="peer h-full w-full text-sm text-black pr-2"
+          className="peer h-12 w-full text-sm text-white pr-2 rounded-full bg-black"
           type="text"
           id="search"
           placeholder="Search something.."
@@ -63,15 +63,14 @@ const Example: FC = () => {
           // }}
 
           onChange={(e) => {
-            console.log(search + " change");
             setSearchTerm(e.target.value);
             setSearch(true);
           }}
         />
       {search  && (
-        <div className=' text-white'>
+        <div className='border-gray-200 border rounded-lg shadow-md text-white text-left mt-2'>
           {filteredProfils.map((profil: Profil) => (
-            <div key={profil.id} className="border-gray-200 border rounded-lg shadow-md p-4 mb-4">
+            <div key={profil.id} className="px-4 py-2 rounded-lg hover:bg-gray-800 hover:cursor-pointer">
               <h3>{profil.name}</h3>
             </div>
           ))}

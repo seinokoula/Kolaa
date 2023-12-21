@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# OpenNewTeck
 
-First, run the development server:
+Ce projet est construit avec Next.js et intègre diverses bibliothèques et dépendances pour faciliter le développement.
+
+## Dépendances
+
+- **@headlessui/react:** ^1.7.17
+- **@heroicons/react:** ^2.0.18
+- **@supabase/auth-helpers-nextjs:** ^0.8.7
+- **@supabase/auth-ui-react:** ^0.4.6
+- **@supabase/auth-ui-shared:** ^0.1.8
+- **@supabase/supabase-js:** ^2.39.0
+- **@tailwindcss/forms:** ^0.5.7
+- **framer-motion:** ^10.16.16
+- **install:** ^0.13.0
+- **million:** ^2.6.4
+- **next:** 14.0.4
+- **next-themes:** ^0.2.1
+- **react:** ^18
+- **react-dom:** ^18
+- **react-router-dom:** ^6.21.0
+
+## Installation
+
+Assurez-vous d'avoir [Node.js](https://nodejs.org/) installé sur votre machine.
+
+1. Clonez ce dépôt :
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/votre-utilisateur/votre-projet.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Installez les dépendances :
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+yarn install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+2. Lancer le serveur :
 
-## Learn More
+```bash
+yarn next dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Tech Stack
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Client:** React, Redux, TailwindCSS
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+**Server:** Node, Express
 
-## Deploy on Vercel
+## Explication des Dépendances
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- @headlessui/react : Une bibliothèque de composants d'interface utilisateur sans styles prédéfinis, destinée à être utilisée avec des frameworks CSS tels que Tailwind CSS.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- @heroicons/react : Une collection de composants d'icônes réactives prêts à l'emploi. Ces icônes sont souvent utilisées pour les interfaces utilisateur modernes.
+
+- @supabase/supabase-js : Une bibliothèque JavaScript client pour interagir avec Supabase, facilitant les requêtes et manipulations de données dans votre application.
+
+- framer-motion : Une bibliothèque de motricité (motion) pour React qui permet de créer des animations fluides et interactives dans votre application.
+
+- million : Une bibliothèque JavaScript pour la manipulation des nombres, fournissant des fonctionnalités avancées pour travailler avec des chiffres très grands ou très petits.
+
+- next : Framework React populaire pour le développement côté serveur, facilitant la création d'applications web modernes.

@@ -3,11 +3,9 @@
 import './globals.css';
 import { animate, motion,scroll } from 'framer-motion';
 import { Fragment, JSX, SVGProps, useState } from 'react';
-import { useEffect } from 'react';
-import { ChevronRightIcon } from '@heroicons/react/20/solid'
 import Image from 'next/image';
 import Link from 'next/link';
-import { Dialog, Disclosure, Popover, Transition, Menu } from '@headlessui/react'
+import { Dialog, Disclosure, Popover, Transition, Menu } from '@headlessui/react';
 import { ThemeProvider, useTheme } from 'next-themes';
 import {
   ArrowPathIcon,
@@ -18,7 +16,13 @@ import {
   SquaresPlusIcon,
   XMarkIcon,
 } from '@heroicons/react/24/outline'
-import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
+import { PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid';
+import { supabase } from '../../src/app/components/Server/supabase';
+
+
+// import { isConnected } from '../../src/app/components/Login.js';
+
+// console.log(isConnected); // true
 
 const variants = {
   hidden: { opacity: 0, x: -200, y: 0 },
@@ -134,6 +138,24 @@ function classNames(...classes: string[]) {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [email, setEmail] = useState<string | undefined>('');
+
+const handleSignOut = async () => {
+  const { error } = await supabase.auth.signOut();
+  if (error) console.log('Error logging out:', error.message);
+  else alert('Logged out!');
+}
+
+const checkAuth = async () => {
+  try {
+      const authenticated = await supabase.auth.getUser()
+      setEmail(authenticated?.data?.user?.email);
+     console.log(authenticated);
+  } catch (error) {
+    console.error("Erreur lors de la vérification de l'authentification :", error);
+  }
+};
+checkAuth();
 
   return (
     <html>
@@ -142,10 +164,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div>
             <header className="">
               <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
-                <div className="flex lg:flex-1">
+                <div className="flex">
                   <Link href="/" className="-m-1.5 p-1.5">
                     <span className="sr-only">Open Tech</span>
-                    <Image width={350} height={350} className="h-8 w-auto" src="https://svgl.vercel.app/library/rowy.svg" alt="" />
+                    <Image width={350} height={350} className="h-8 w-auto" src="https://svgl.vercel.app/library/twitter.svg" alt="" />
                   </Link>
                 </div>
                 <div className="flex lg:hidden">
@@ -171,15 +193,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     </div>
                   </Popover.Group>
                 </div>
-                <div className="flex gap-x-4">
-                  <Link href="signup" className="text-sm font-semibold leading-6 ring-2 ring-gray-500 rounded-md px-3 py-2">Sign Up</Link>
-                  <Link href="login" className="text-sm font-semibold leading-6 py-2">Log In</Link>
-                </div>
+                  <div className="flex gap-x-4">
+                    <Link href="signup" className="text-sm font-semibold leading-6 ring-2 ring-gray-500 rounded-md px-3 py-2">Sign Up</Link>
+                    <Link href="login" className="text-sm font-semibold leading-6 py-2">Log In</Link>
+                    <Link href="login" className="text-sm font-semibold leading-6 py-2" onClick={handleSignOut}>Log Out</Link>
+                    <p className='py-2'>{email}</p>
+                  </div>
               </nav>
 
               <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
                 <div className="fixed inset-0 z-10" />
-                <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-slate-400 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+                <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-black px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
                   <div className="flex items-center justify-between">
                     <Link href="#" className="-m-1.5 p-1.5">
                       <span className="sr-only">Open Teck</span>
@@ -187,7 +211,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                         width={350}
                         height={350}
                         className="h-8 w-auto"
-                        src="https://svgl.vercel.app/library/rowy.svg"
+                        src="https://svgl.vercel.app/library/twitter.svg"
                         alt=""
                       />
                     </Link>
@@ -207,7 +231,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                           href="profile"
                           className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:bg-gray-50"
                         >
-                          profile
+                          Profile
                         </Link>
                         <Link
                           href="market"
@@ -265,10 +289,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <div className="xl:grid xl:grid-cols-3 xl:gap-8">
                   <div className="space-y-8">
                     <Image
-                      width={350}
-                      height={350}
-                      className="h-7"
-                      src="https://svgl.vercel.app/library/rowy.svg"
+                      width={40}
+                      height={35}
+                      className="h-8"
+                      src="https://svgl.vercel.app/library/twitter.svg"
                       alt="Company name"
                     />
                     <p className="text-sm leading-6">

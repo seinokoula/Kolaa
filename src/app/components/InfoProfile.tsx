@@ -1,49 +1,60 @@
-// 'usec client'
+'use client'
 
-// import { createClient } from '@supabase/supabase-js';
-// import { useState, useEffect } from 'react';
+import { createClient } from '@supabase/supabase-js';
+import { useState, useEffect } from 'react';
 
-// const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-// const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_KEY;
-// const supabase = createClient(supabaseUrl!, supabaseKey!);
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_KEY;
+const supabase = createClient(supabaseUrl!, supabaseKey!);
 
-// interface Profile {
-//     id: number;
-//     name: string;
-//     description: string;
-//     location: string;
-// }
-// function InfoProfile(_props: any) {
-// const [profile, setProfile] = useState(null);
-// const session = supabase.auth.getSession();
-// session.then((data) => {
-//     if (data) {
-//         const user = data.data.session?.user.id;
-//         console.log('userid', user);
-//         localStorage.setItem('userid', user!);
-//     }
-// })
+interface Profile {
+    id: number;
+    name: string;
+    description: string;
+    location: string;
+}
+function InfoProfile(_props: any) {
+    const [profile, setProfile] = useState<Profile | null>(null);
+    const [lastFetchTime, setLastFetchTime] = useState(0);
 
-// useEffect(() => {
-//     async function getProfil() {
-//         const { data, error } = await supabase
-//             .from('profiles')
-//             .select(`id, name, description, location`)
-//             .eq('user_id', localStorage.getItem('userid'))
-//             .single();
-//         if (error) {
-//             console.log('error', error);
-//         } else{
-//             setProfile(data) 
-//         }
-//     }
-//     getProfil();
-// }, []);
+    let access_token: string = '';
+    if (typeof window !== 'undefined') {
+        access_token = localStorage.getItem('user') || '';
+    }
 
-// return (
-//     <div>
+    useEffect(() => {
+        async function getProfil() {
+            const currentTime = Date.now();
+            if (currentTime - lastFetchTime > 1000) {
+                const { data, error } = await supabase
+                    .from('profil')
+                    .select(`id, name, description, location`)
+                    .eq('user_id', access_token)
+                    .single();
+                if (error) {
+                    console.log('error', error);
+                } else {
+                    setProfile(data || null);
+                    setLastFetchTime(currentTime);
+                    console.log('profil', profile);
+                }
+            }
+        }
 
-//     </div>
-// )
-// }
-// export default InfoProfile;
+        // Call getProfil function only when access_token changes
+        getProfil();
+    }, [access_token, profile, lastFetchTime]);
+
+    return (
+        <div className='mx-auto max-w-7xl px-6 sm:py-24 lg:px-8'>
+            <h1 className='text-xl'>Name : </h1>
+            <p>{profile?.name}</p>
+            <h1 className='text-xl'>Description : </h1>
+            <p>{profile?.description}</p>
+            <h1 className='text-lg'>Location : </h1>
+            <p>{profile?.location}</p>
+        </div>
+
+    )
+}
+export default InfoProfile;

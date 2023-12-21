@@ -1,7 +1,10 @@
+'use client';
+
 import { ArrowPathIcon, CloudArrowUpIcon, FingerPrintIcon, LockClosedIcon } from '@heroicons/react/24/outline'
 import { motion } from "framer-motion"
 import SearchBar from '../app/components/SearchBar'
 import GetAllPost from '../app/components/GetAllPost'
+import Header from './components/Header';
 
 const features = [
   {
@@ -33,6 +36,7 @@ const features = [
 export default function Example() {
   return (
     <div className="">
+      <Header/>
       <SearchBar />
       <GetAllPost />
     </div>

@@ -30,7 +30,7 @@ function PostForm(_props: any) {
             description: description,
             title: title,
             link: link,
-            profil_id: access_token,
+           // profil_id: access_token,
         });
         console.log(access_token, refresh_token)
         console.log(data, error);
@@ -50,6 +50,15 @@ function PostForm(_props: any) {
                 onSubmit={handleSubmit}
                 className="pt-12 pb-8 mb-4"
             >
+                 <div className="mb-4">
+                    <label className="block text-xl text-left mb-2">Title:</label>
+                    <textarea
+                        placeholder="Title"
+                        value={title}
+                        onChange={(event) => setTitle(event.target.value)}
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
+                    ></textarea>
+                </div>
                 <div className="mb-4">
                     <label className="block text-xl text-left mb-2">Description:</label>
                     <textarea
@@ -59,15 +68,7 @@ function PostForm(_props: any) {
                         className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
                     ></textarea>
                 </div>
-                <div className="mb-4">
-                    <label className="block text-xl text-left mb-2">Title:</label>
-                    <textarea
-                        placeholder="Title"
-                        value={title}
-                        onChange={(event) => setTitle(event.target.value)}
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
-                    ></textarea>
-                </div>
+               
                 <div className="mb-4">
                     <label className="block text-xl text-left mb-2">Link:</label>
                     <input
