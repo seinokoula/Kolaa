@@ -10,8 +10,6 @@ export default function Header() {
                 "https://prod.spline.design/l5qSnulO3eY0SGbZ/scene.splinecode",
                 "https://prod.spline.design/80LPJpQtjgW-a95X/scene.splinecode",
                 "https://prod.spline.design/9i6cHACyl8NWozaQ/scene.splinecode",
-                "https://prod.spline.design/OlhliyjWXtfDf58h/scene.splinecode",
-                "https://prod.spline.design/1IOzMWk62-SCBJZD/scene.splinecode",
                 "https://prod.spline.design/30jNNaQapcfeJIZ4/scene.splinecode",
                 "https://prod.spline.design/a6UKrsznojmsqu2m/scene.splinecode",
             ];
@@ -24,8 +22,8 @@ export default function Header() {
     }, []);
 
     return (
-        <div className="mx-auto w-full px-6 py-16 sm:py-24 lg:px-12 h-screen flex lg:max-w-7xl">
-            <div className="flex flex-col w-1/2 mt-36 gap-4">
+        <div className="mx-auto w-full px-6 sm:py-24 lg:px-12 h-screen flex lg:max-w-7xl">
+            <div className="flex flex-col w-1/2 mt-32 gap-4">
                 <h1 className="text-7xl font-black text text-[#1DA1F2]">
                     Totally not Twitter
                 </h1>

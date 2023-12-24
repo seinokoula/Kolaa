@@ -14,12 +14,8 @@ export default function LoginPage() {
         if (data) {
             const user = data.data.session?.user.id;
             const userRefresh = data.data.session?.refresh_token;
-           // const userId = supabase.auth.getUser();
-           // console.log('userid',userId);
-            console.log(user);
             localStorage.setItem('user', user!);
             localStorage.setItem('userRefresh', userRefresh!);
-          //  localStorage.setItem('userId', userId!);
         }
     })
 

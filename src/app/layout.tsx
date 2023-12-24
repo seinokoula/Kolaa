@@ -19,17 +19,6 @@ import {
 import { PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid';
 import { supabase } from '../../src/app/components/Server/supabase';
 
-
-// import { isConnected } from '../../src/app/components/Login.js';
-
-// console.log(isConnected); // true
-
-const variants = {
-  hidden: { opacity: 0, x: -200, y: 0 },
-  enter: { opacity: 1, x: 0, y: 0 },
-}
-
-
 const products = [
   { name: 'Analytics', description: 'Get Link better understanding of your traffic', href: '#', icon: ChartPieIcon },
   { name: 'Engagement', description: 'Speak directly to your customers', href: '#', icon: CursorArrowRaysIcon },
@@ -194,9 +183,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   </Popover.Group>
                 </div>
                 <div className="flex gap-x-4">
-                  <Link href="signup" className="text-sm font-semibold leading-6 ring-2 ring-gray-500 rounded-md px-3 py-2">Sign Up</Link>
-                  <Link href="login" className="text-sm font-semibold leading-6 py-2">Log In</Link>
-                  <Link href="login" className="text-sm font-semibold leading-6 py-2" onClick={handleSignOut}>Log Out</Link>
+                  {email ? (
+                    <Link href="login" className="text-sm font-semibold leading-6 py-2" onClick={handleSignOut}>
+                      Log Out
+                    </Link>
+                  ) : (
+                    <>
+                      <Link href="signup" className="text-sm font-semibold leading-6 ring-2 ring-gray-500 rounded-md px-3 py-2">
+                        Sign Up
+                      </Link>
+                      <Link href="login" className="text-sm font-semibold leading-6 py-2">
+                        Log In
+                      </Link>
+                    </>
+                  )}
                   <p className='py-2'>{email}</p>
                 </div>
               </nav>
@@ -273,14 +273,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 </Dialog.Panel>
               </Dialog>
             </header>
-            <motion.main
-              variants={variants}
-              initial="hidden"
-              animate="enter"
-              transition={{ type: "linear" }}
-            >
               <main data-barba="container" data-barba-namespace="basic" className="flex-auto md:mx-16 lg:mx-36">{children}</main>
-            </motion.main>
             <footer aria-labelledby="footer-heading">
               <h2 id="footer-heading" className="sr-only">
                 Footer
