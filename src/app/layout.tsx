@@ -234,7 +234,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                           Profile
                         </Link>
                         <Link
-                          href="market"
+                          href="faq"
                           className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:bg-gray-50"
                         >
                           Faq
@@ -289,7 +289,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                       alt="Company name"
                     />
                     <p className="text-sm leading-6">
-                      Making the world Link better place through constructing elegant hierarchies.
+                      Making the world Link better place
                     </p>
                     <div className="flex space-x-6">
                       {navigation.social.map((item) => (
