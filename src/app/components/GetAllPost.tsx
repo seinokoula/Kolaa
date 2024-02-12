@@ -45,14 +45,14 @@ function GetAllPost(_props: any) {
         <div className="mx-auto max-w-7xl px-6 py-12 lg:px-8">
             <div className='flex w-full justify-between'>
                 <h2 className="text-4xl font-bold leading-10 tracking-tight">Feed</h2>
-                <button className='border-gray-400 border rounded-lg shadow-md p-4 mb-4' onClick={handleButtonClick}>Post +</button>
+                <button className='border-four_400 border-2 rounded-lg shadow-md p-4 mb-4' onClick={handleButtonClick}>Post +</button>
             </div>
             {displayForm && (
                 <PostForm />
             )}
             <div className="mt-8">
                 {posts.map((post: Post) => (
-                    <div key={post.id} className="border-gray-400 border rounded-lg shadow-md p-4 mb-4 flex-wrap">
+                    <div key={post.id} className="border-gray-400 border border-secondary_200 rounded-lg shadow-md p-4 mb-4 flex-wrap">
                         <div className="card-content">
                             <h3 className="text-xl font-bold mb-2">{post.title}</h3>
                             <p className="text-gray-400 mb-2">{post.description}</p>

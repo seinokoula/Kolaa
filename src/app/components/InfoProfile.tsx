@@ -46,15 +46,15 @@ function InfoProfile(_props: any) {
     }, [access_token, profile, lastFetchTime]);
 
     return (
-        <motion.div initial={{ x: 0 }} animate={{ rotate : 720 }} transition={{ ease: "easeOut", duration: 3}} className='mx-auto max-w-7xl px-6 sm:py-24 lg:px-8 gap-12 grid'>
+        <div className='mx-auto max-w-7xl px-6 sm:py-24 lg:px-8 gap-12 grid'>
             <h2 className="text-4xl font-bold leading-10 tracking-tight">Account</h2>
             <h1 className='text-xl'>Name : </h1>
-            <p className='animate-bounce text-red-600 ml-8 font-bold text-4xl w-fit'>{profile?.name}</p>
+            <p className='font-bold text-4xl w-fit'>{profile?.name}</p>
             <h1 className='text-xl'>Description : </h1>
-            <p className='animate-bounce text-green-600 ml-16 font-bold text-4xl w-fit'>{profile?.description}</p>
+            <p className='font-bold text-4xl w-fit'>{profile?.description}</p>
             <h1 className='text-lg'>Location : </h1>
-            <p className='animate-bounce text-blue-600 ml-24 font-bold text-4xl w-fit'>{profile?.location}</p>
-        </motion.div>
+            <p className='font-bold text-4xl w-fit'>{profile?.location}</p>
+        </div>
     )
 }
 export default InfoProfile;

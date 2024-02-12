@@ -156,7 +156,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <div className="flex">
                   <Link href="/" className="-m-1.5 p-1.5">
                     <span className="sr-only">Open Tech</span>
-                    <Image width={350} height={350} className="h-8 w-auto" src="https://svgl.vercel.app/library/twitter.svg" alt="" />
+                    <Image width={350} height={350} className="h-8 w-auto" src="https://svgl.vercel.app/library/discourse.svg" alt="" />
                   </Link>
                 </div>
                 <div className="flex lg:hidden">
@@ -189,7 +189,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     </Link>
                   ) : (
                     <>
-                      <Link href="signup" className="text-sm font-semibold leading-6 ring-2 ring-gray-500 rounded-md px-3 py-2">
+                      <Link href="signup" className="text-sm font-semibold leading-6 border-secondary_200 border-2 rounded-md px-3 py-2">
                         Sign Up
                       </Link>
                       <Link href="login" className="text-sm font-semibold leading-6 py-2">
@@ -285,11 +285,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                       width={40}
                       height={35}
                       className="h-8"
-                      src="https://svgl.vercel.app/library/twitter.svg"
+                      src="https://svgl.vercel.app/library/discourse.svg"
                       alt="Company name"
                     />
                     <p className="text-sm leading-6">
-                      Making the world Link better place
+                    Pour voir votre nouvelle veille technologique.
                     </p>
                     <div className="flex space-x-6">
                       {navigation.social.map((item) => (
@@ -355,8 +355,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     </div>
                   </div>
                 </div>
-                <div className="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-24">
-                  <p className="text-xs leading-5 text-gray-500">&copy; 2024 Not Twitter, Inc. All rights reserved.</p>
+                <div className="mt-16 border-t border-secondary_200 pt-8 sm:mt-20 lg:mt-24">
+                  <p className="text-xs leading-5 text-gray-500">&copy; 2024 Kalo, Inc. All rights reserved.</p>
                 </div>
               </div>
             </footer>

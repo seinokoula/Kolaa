@@ -14,6 +14,12 @@ const config: Config = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
     },
+    colors: {
+      primary_300: '#FDE767',
+      secondary_200: '#fef18a',
+      tertiary_100: '#fefac3',
+      four_400: '#f9cf16'
+    }
   },
   plugins: [
     require('@tailwindcss/forms'),
