@@ -39,7 +39,7 @@ const Example: FC = () => {
   return (
     <div className='mx-auto px-4 text-center md:max-w-7xl md:px-8 max-w-7xl' id="feed">
       <input
-          className="peer h-12 w-full text-sm text-white pr-2 rounded-full bg-black"
+          className="peer h-12 w-full text-sm text-white pr-2 rounded-full border-secondary_200 border bg-black"
           type="text"
           id="search"
           placeholder="Search something.."
