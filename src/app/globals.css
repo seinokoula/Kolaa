@@ -9,6 +9,16 @@
   scroll-behavior: smooth;
 }
 
+@font-face {
+  font-family: 'Kola-Regular';
+  src: url('../../fonts/Kola-Regular.woff2') format('woff2'),
+    url('../../fonts/Kola-Regular.woff') format('woff'),
+    url('../../fonts/Kola-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
@@ -19,14 +29,20 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
+  background: linear-gradient(to bottom,
       transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
+
 canvas {
- width: 100% !important;
- height: 100% !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+h1 {
+  font-family: 'Kola-Regular', sans-serif;
+}
+
+h2 {
+  font-family: 'Kola-Regular', sans-serif;
 }

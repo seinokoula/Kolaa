@@ -15,7 +15,7 @@ export default function Header() {
                 </p>
                 <a
                     href="#feed"
-                    className="border-gray-400 border-2 border-four_400 rounded-lg shadow-md p-2 w-fit"
+                    className="text-[#000] font-bold bg-four_400 rounded-lg shadow-md p-2 w-fit"
                 >
                     Voir les publications
                 </a>
