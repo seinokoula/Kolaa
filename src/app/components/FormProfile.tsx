@@ -77,7 +77,7 @@ function Form(_props: any) {
                 </div>
                 <button
                     type="submit"
-                    className="inline-block p-4 text-lg font-medium text-indigo-600 bg-white border border-indigo-600 rounded-lg shadow-2xl mt-6 hover:bg-indigo-600 hover:text-white hover:shadow-none"
+                    className="inline-block text-black p-4 text-lg font-medium text-indigo-600 bg-primary_300 border border-indigo-600 rounded-lg shadow-2xl mt-6 hover:bg-indigo-600 hover:text-black hover:shadow-none"
                 >
                     Submit
                 </button>

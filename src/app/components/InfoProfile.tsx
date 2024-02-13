@@ -46,15 +46,29 @@ function InfoProfile(_props: any) {
     }, [access_token, profile, lastFetchTime]);
 
     return (
-        <div className='mx-auto max-w-7xl px-6 sm:py-24 lg:px-8 gap-12 grid'>
-            <h2 className="text-4xl font-bold leading-10 tracking-tight">Account</h2>
-            <h1 className='text-xl'>Name : </h1>
-            <p className='font-bold text-4xl w-fit'>{profile?.name}</p>
-            <h1 className='text-xl'>Description : </h1>
-            <p className='font-bold text-4xl w-fit'>{profile?.description}</p>
-            <h1 className='text-lg'>Location : </h1>
-            <p className='font-bold text-4xl w-fit'>{profile?.location}</p>
-        </div>
+        <>
+            <h2 className="text-4xl font-bold leading-10 tracking-tight px-6">Profile</h2>
+            <div className='mx-auto max-w-7xl px-6 sm:py-24 lg:px-8 gap-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
+                <div className="border border-secondary_200 text-white shadow-lg rounded-lg p-6">
+                    <div>
+                        <h1 className='text-xl'>Nom : </h1>
+                        <p className='font-bold text-4xl w-fit'>{profile?.name}</p>
+                    </div>
+                </div>
+                <div className="border border-secondary_200 text-white shadow-lg rounded-lg p-6">
+                    <div>
+                        <h1 className='text-xl'>Description : </h1>
+                        <p className='font-bold text-4xl w-fit'>{profile?.description}</p>
+                    </div>
+                </div>
+                <div className="border border-secondary_200 text-white shadow-lg rounded-lg p-6">
+                    <div>
+                        <h1 className='text-lg'>localisation : </h1>
+                        <p className='font-bold text-4xl w-fit'>{profile?.location}</p>
+                    </div>
+                </div>
+            </div>
+        </>
     )
 }
 export default InfoProfile;

@@ -156,7 +156,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <div className="flex">
                   <Link href="/" className="-m-1.5 p-1.5">
                     <span className="sr-only">Open Tech</span>
-                    <Image width={350} height={350} className="h-8 w-auto" src="https://svgl.vercel.app/library/discourse.svg" alt="" />
+                    <Image width={350} height={350} className="h-8 w-auto" src="https://lkhayewnehhxhqkckehs.supabase.co/storage/v1/object/public/logo/Logo.png?t=2024-02-13T10%3A19%3A59.018Z" alt="" />
                   </Link>
                 </div>
                 <div className="flex lg:hidden">
@@ -206,12 +206,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-black px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
                   <div className="flex items-center justify-between">
                     <Link href="#" className="-m-1.5 p-1.5">
-                      <span className="sr-only">Open Teck</span>
+                      <span className="sr-only">Kolaa</span>
                       <Image
                         width={350}
                         height={350}
                         className="h-8 w-auto"
-                        src="https://svgl.vercel.app/library/twitter.svg"
+                        src="https://lkhayewnehhxhqkckehs.supabase.co/storage/v1/object/public/logo/Logo.png?t=2024-02-13T10%3A19%3A59.018Z"
                         alt=""
                       />
                     </Link>
@@ -285,7 +285,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                       width={40}
                       height={35}
                       className="h-8"
-                      src="https://svgl.vercel.app/library/discourse.svg"
+                      src="https://lkhayewnehhxhqkckehs.supabase.co/storage/v1/object/public/logo/Logo.png?t=2024-02-13T10%3A19%3A59.018Z"
                       alt="Company name"
                     />
                     <p className="text-sm leading-6">
