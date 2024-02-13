@@ -5,6 +5,7 @@ import { motion } from "framer-motion"
 import SearchBar from '../app/components/SearchBar'
 import GetAllPost from '../app/components/GetAllPost'
 import Header from './components/Header';
+import { useState } from 'react';
 
 const features = [
   {
@@ -34,11 +35,13 @@ const features = [
 ]
 
 export default function Example() {
+  const [searchTermForPosts, setSearchTermForPosts] = useState<string>('');
+
   return (
     <div className="mw">
-      <Header/>
-      <SearchBar />
-      <GetAllPost />
+      <Header />
+      <SearchBar setSearchTermForPosts={setSearchTermForPosts} />
+      <GetAllPost searchTerm={searchTermForPosts} />
     </div>
-  )
+  );
 }

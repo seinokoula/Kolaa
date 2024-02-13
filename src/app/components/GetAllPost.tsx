@@ -16,14 +16,20 @@ interface Post {
   created_at: Date;
   profil_id: number;
   image: string;
-}
-interface Module {
-  id: number;
   module: string;
 }
+interface Module {
+    id: number;
+    module: string;
+}
 
-function GetAllPost(_props: any) {
+interface GetAllPostProps {
+  searchTerm: string;
+}
+
+function GetAllPost({ searchTerm }: GetAllPostProps) {
   const [posts, setPosts] = useState<Post[]>([]);
+  const [allPosts, setAllPosts] = useState<Post[]>([]);
   const [modulesList, setModulesList] = useState<Module[]>([]);
   const [displayForm, setDisplayForm] = useState<boolean>(false);
   const [module, setModule] = useState<string>("");
@@ -33,7 +39,8 @@ function GetAllPost(_props: any) {
       const { data, error } = await supabase
         .from("post")
         .select("*")
-        .eq("module", module);
+        .eq("module", module)
+        .ilike("title", `%${searchTerm}%`);
       if (error) {
         console.error(error);
       } else {
@@ -41,30 +48,45 @@ function GetAllPost(_props: any) {
       }
     }
     getPosts();
-  }, [module]);
+  }, [module, searchTerm]);
 
   useEffect(() => {
-    async function getModules() {
-      const { data, error } = await supabase.from("schoolModule").select("*");
+    async function getAllPosts() {
+      const { data, error } = await supabase
+        .from("post")
+        .select("*")
+        .ilike("title", `%${searchTerm}%`);
       if (error) {
         console.error(error);
       } else {
-        setModulesList(data ? data.reverse() : []);
+        setAllPosts(data ? data.reverse() : []);
       }
     }
-    getModules();
-  }, []);
+    getAllPosts();
+  }, [searchTerm]);
 
-  const handleButtonClick = () => {
-    setDisplayForm((prevDisplayForm) => !prevDisplayForm);
-  };
+    useEffect(() => {
+        async function getModules() {
+            const { data, error } = await supabase.from("schoolModule").select("*");
+            if (error) {
+                console.error(error);
+            } else {
+                setModulesList(data ? data.reverse() : []);
+            }
+        }
+        getModules();
+    }, []);
+
+    const handleButtonClick = () => {
+        setDisplayForm((prevDisplayForm) => !prevDisplayForm);
+    };
 
   return (
     <div className="mx-auto max-w-7xl px-6 py-12 lg:px-8">
       <div className="flex w-full justify-between">
         <h2 className="text-4xl font-bold leading-10 tracking-tight">Feed</h2>
         <button
-          className='border-four_400 border-2 rounded-lg shadow-md p-4 mb-4'
+          className="border-four_400 border-2 rounded-lg shadow-md p-4 mb-4"
           onClick={handleButtonClick}
         >
           Post +
@@ -75,7 +97,9 @@ function GetAllPost(_props: any) {
         onChange={(event) => setModule(event.target.value)}
         value={module}
       >
-        <option value="">Select a Module</option>
+        <option value="">All</option>
+        <option disabled value="">-------</option>
+
         {modulesList.map((module: Module) => (
           <option key={module.id} value={module.module}>
             {module.module}
@@ -85,32 +109,59 @@ function GetAllPost(_props: any) {
       {displayForm && <PostForm />}
       <h2 className="text-3xl font-bold leading-10 tracking-tight">{module}</h2>
       <div className="mt-8">
-        {posts.map((post: Post) => (
-          <div
-            key={post.id}
-            className="border-gray-400 border rounded-lg shadow-md p-4 mb-4 flex-wrap"
-          >
-            <div className="card-content">
-              <h3 className="text-xl font-bold mb-2">{post.title}</h3>
-              <p className="text-gray-400 mb-2">{post.description}</p>
-              <a
-                href={post.link}
-                className="text-blue-500 hover:underline mb-2 max-w-fit"
-                style={{ wordBreak: "break-all" }}
+        {module === ""
+          ? allPosts.map((post: Post) => (
+              <div
+                key={post.id}
+                className="border-secondary_200 border rounded-lg shadow-md p-4 mb-4 flex-wrap"
               >
-                {post.link}
-              </a>
-              <p className="text-gray-600 text-sm">
-                {new Date(post.created_at).toLocaleDateString("fr-FR", {
-                  hour: "numeric",
-                  minute: "numeric",
-                  hour12: false,
-                })}
-              </p>
-              <p className="text-gray-500">{module}</p>
-            </div>
-          </div>
-        ))}
+                <div className="card-content">
+                  <h3 className="text-xl font-bold mb-2">{post.title}</h3>
+                  <p className="text-gray-400 mb-2">{post.description}</p>
+                  <a
+                    href={post.link}
+                    className="text-blue-500 hover:underline mb-2 max-w-fit"
+                    style={{ wordBreak: "break-all" }}
+                  >
+                    {post.link}
+                  </a>
+                  <p className="text-gray-600 text-sm">
+                    {new Date(post.created_at).toLocaleDateString("fr-FR", {
+                      hour: "numeric",
+                      minute: "numeric",
+                      hour12: false,
+                    })}
+                  </p>
+                  <p className="text-gray-500">{post.module}</p>
+                </div>
+              </div>
+            ))
+          : posts.map((post: Post) => (
+              <div
+                key={post.id}
+                className="border-secondary_200 border rounded-lg shadow-md p-4 mb-4 flex-wrap"
+              >
+                <div className="card-content">
+                  <h3 className="text-xl font-bold mb-2">{post.title}</h3>
+                  <p className="text-gray-400 mb-2">{post.description}</p>
+                  <a
+                    href={post.link}
+                    className="text-blue-500 hover:underline mb-2 max-w-fit"
+                    style={{ wordBreak: "break-all" }}
+                  >
+                    {post.link}
+                  </a>
+                  <p className="text-gray-600 text-sm">
+                    {new Date(post.created_at).toLocaleDateString("fr-FR", {
+                      hour: "numeric",
+                      minute: "numeric",
+                      hour12: false,
+                    })}
+                  </p>
+                  <p className="text-gray-500">{post.module}</p>
+                </div>
+              </div>
+            ))}
       </div>
     </div>
   );

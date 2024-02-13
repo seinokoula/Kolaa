@@ -63,7 +63,7 @@ export default function Example() {
                         ))}
                     </dl>
                 </div>
-            M</div>
+            </div>
         </div>
     )
 }
