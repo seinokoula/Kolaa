@@ -19,7 +19,8 @@ const config: Config = {
       secondary_200: '#fef18a',
       tertiary_100: '#fefac3',
       four_400: '#f9cf16',
-      black: 'black'
+      black: '#000',
+      white: '#fff',
     }
   },
   plugins: [
