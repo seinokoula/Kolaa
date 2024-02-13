@@ -3,42 +3,43 @@ import Modal from "../components/modal"
 const faqs = [
     {
         id: 1,
-        question: "What's the best thing about Switzerland?",
+        question: "Quel est l'objectif de ce site de veille technologique\u00A0?",
         answer:
-            "I don't know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
+            "Notre site a pour vocation de permettre aux utilisateurs de partager des publications et de rester informés sur les dernières avancées technologiques dans divers domaines, mais principalement sur le web.",
     },
     {
         id: 2,
-        question: "What's the best thing about Switzerland?",
+        question: "Comment puis-je publier du contenu sur ce site\u00A0?",
         answer:
-            "I don't know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
+            "Pour publier du contenu, vous devez vous inscrire gratuitement sur notre plateforme. Une fois inscrit, vous pourrez soumettre vos articles de veille technologique depuis la page feed.",
     },
     {
         id: 3,
-        question: "lorem ipsum dolor sit amet consectetur adipisicing elit?",
+        question: "Est-ce que le site sera mis à jour avec de nouvelles fonctionnalités à l'avenir\u00A0?",
         answer:
-            "I don't know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
+            "Oui, nous travaillons constamment à améliorer notre site et à ajouter de nouvelles fonctionnalités pour offrir une meilleure expérience à nos utilisateurs. Restez à l'écoute pour les mises à jour à venir !",
     },
     {
         id: 4,
-        question: "What's the best thing about Switzerland?",
+        question: "Est-ce que je peux trier le contenu pour rechercher un sujet spécifique\u00A0?",
         answer:
-            "I don't know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
+            "Absolument, notre page d'alimentation dispose d'un système de filtrage. Les filtres sont basés sur les modules de cours que les étudiants de l'IIM en développement web ont durant l'année.",
     },
     {
         id: 5,
-        question: "What's the best thing about Switzerland?",
+        question: "Qui peut utiliser notre site\u00A0?",
         answer:
-            "I don't know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
+            "Notre site est accessible à tous, mais il est principalement conçu pour les étudiants de l'IIM en développement web. En effet, le contenu est principalement axé sur les modules de cours suivis par les étudiants tout au long de l'année.",
     },
     {
         id: 6,
-        question: "What's the best thing about Switzerland?",
+        question: "Y a-t-il des restrictions sur le type de contenu que je peux publier\u00A0?",
         answer:
-            "I don't know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
+            "Nous encourageons la publication de contenu pertinent et informatif sur la veille technologique. Cependant, nous avons des directives communautaires qui interdisent le contenu offensant, illégal ou trompeur.",
     },
-
 ]
+
+
 
 export default function Example() {
     return (
