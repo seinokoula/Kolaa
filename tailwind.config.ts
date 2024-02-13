@@ -18,7 +18,8 @@ const config: Config = {
       primary_300: '#FDE767',
       secondary_200: '#fef18a',
       tertiary_100: '#fefac3',
-      four_400: '#f9cf16'
+      four_400: '#f9cf16',
+      black: 'black'
     }
   },
   plugins: [
