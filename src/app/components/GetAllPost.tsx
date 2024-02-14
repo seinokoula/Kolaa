@@ -17,14 +17,21 @@ interface Post {
   profil_id: number;
   image: string;
   module: string;
+  user_id: string;
 }
 interface Module {
-    id: number;
-    module: string;
+  id: number;
+  module: string;
 }
 
 interface GetAllPostProps {
   searchTerm: string;
+}
+
+interface Profile {
+  id: number;
+  name: string;
+  user_id: string;
 }
 
 function GetAllPost({ searchTerm }: GetAllPostProps) {
@@ -33,6 +40,7 @@ function GetAllPost({ searchTerm }: GetAllPostProps) {
   const [modulesList, setModulesList] = useState<Module[]>([]);
   const [displayForm, setDisplayForm] = useState<boolean>(false);
   const [module, setModule] = useState<string>("");
+  const [profile, setProfile] = useState<Profile[]>([]);
 
   useEffect(() => {
     async function getPosts() {
@@ -65,21 +73,37 @@ function GetAllPost({ searchTerm }: GetAllPostProps) {
     getAllPosts();
   }, [searchTerm]);
 
-    useEffect(() => {
-        async function getModules() {
-            const { data, error } = await supabase.from("schoolModule").select("*");
-            if (error) {
-                console.error(error);
-            } else {
-                setModulesList(data ? data.reverse() : []);
-            }
-        }
-        getModules();
-    }, []);
+  useEffect(() => {
+    async function getModules() {
+      const { data, error } = await supabase.from("schoolModule").select("*");
+      if (error) {
+        console.error(error);
+      } else {
+        setModulesList(data ? data.reverse() : []);
+      }
+    }
+    getModules();
+  }, [setModulesList]);
 
-    const handleButtonClick = () => {
-        setDisplayForm((prevDisplayForm) => !prevDisplayForm);
-    };
+  useEffect(() => {
+    async function getProfil() {
+      const { data, error } = await supabase.from("profil").select("*");
+      if (error) {
+        console.error(error);
+      } else {
+        setProfile(data ? data.reverse() : []);
+      }
+    }
+    getProfil();
+  }, [setProfile]);
+  
+  const handleButtonClick = () => {
+    setDisplayForm((prevDisplayForm) => !prevDisplayForm);
+  };
+
+  const findProfilName = (userId: string) => {
+    return profile.find((p) => p.user_id === userId)?.name || "Inconnu";
+  };
 
   return (
     <div className="mx-auto max-w-7xl px-6 py-12 lg:px-8">
@@ -98,7 +122,9 @@ function GetAllPost({ searchTerm }: GetAllPostProps) {
         value={module}
       >
         <option value="">All</option>
-        <option disabled value="">-------</option>
+        <option disabled value="">
+          -------
+        </option>
 
         {modulesList.map((module: Module) => (
           <option key={module.id} value={module.module}>
@@ -133,6 +159,9 @@ function GetAllPost({ searchTerm }: GetAllPostProps) {
                     })}
                   </p>
                   <p className="text-gray-500">{post.module}</p>
+                    <h3 className="text-gray-500">
+                      Par : {findProfilName(post.user_id)}
+                    </h3>
                 </div>
               </div>
             ))
@@ -159,6 +188,9 @@ function GetAllPost({ searchTerm }: GetAllPostProps) {
                     })}
                   </p>
                   <p className="text-gray-500">{post.module}</p>
+                    <h3 className="text-gray-500">
+                      Par : {findProfilName(post.user_id)}
+                    </h3>
                 </div>
               </div>
             ))}
