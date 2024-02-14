@@ -52,7 +52,7 @@ export default function LoginPage() {
                 setErrorLogin(false);
               }}
             >
-              L'email ou le mot de passe est incorrect
+              L&apos; email ou le mot de passe est incorrect
             </Alert>
           </Stack>
         )}
