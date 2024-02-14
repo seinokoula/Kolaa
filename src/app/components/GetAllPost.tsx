@@ -208,7 +208,6 @@ function GetAllPost({ searchTerm }: GetAllPostProps) {
             </div>
         </div>
     );
-=======
   const findProfilName = (userId: string) => {
     return profile.find((p) => p.user_id === userId)?.name || "Inconnu";
   };
