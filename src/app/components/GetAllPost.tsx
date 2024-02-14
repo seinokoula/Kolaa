@@ -34,6 +34,17 @@ interface Profile {
     user_id: string;
 }
 
+function cleanURL(url: string) {
+  let cleanedURL = url.replace(/^(?:https?:\/\/)?(?:www\.)?/i, "");
+  const parts = cleanedURL.split('/');
+  if (parts.length > 1) {
+    cleanedURL = `${parts[0]}/${parts[1]}`;
+  } else {
+    cleanedURL = parts[0];
+  }
+  return cleanedURL;
+}
+
 function GetAllPost({ searchTerm }: GetAllPostProps) {
     const [posts, setPosts] = useState<Post[]>([]);
     const [allPosts, setAllPosts] = useState<Post[]>([]);
@@ -197,5 +208,68 @@ function GetAllPost({ searchTerm }: GetAllPostProps) {
             </div>
         </div>
     );
+=======
+  const findProfilName = (userId: string) => {
+    return profile.find((p) => p.user_id === userId)?.name || "Inconnu";
+  };
+  return (
+    <div className="mx-auto max-w-7xl px-6 py-12 lg:px-8">
+      <div className="flex w-full justify-between">
+        <h2 className="text-4xl font-bold leading-10 tracking-tight">Feed</h2>
+        <button
+          className="border-four_400 border-2 rounded-lg shadow-md p-4 mb-4"
+          onClick={handleButtonClick}
+        >
+          Post +
+        </button>
+      </div>
+      <select
+        className="text-white pr-2 bg-black rounded-lg shadow-md p-2 mb-4 w-80"
+        onChange={(event) => setModule(event.target.value)}
+        value={module}
+      >
+        <option value="">All</option>
+        <option disabled value="">-------</option>
+        {modulesList.map((module: Module) => (
+          <option key={module.id} value={module.module}>
+            {module.module}
+          </option>
+        ))}
+      </select>
+      {displayForm && <PostForm />}
+      <h2 className="text-3xl font-bold leading-10 tracking-tight">{module}</h2>
+      <div className="mt-8">
+        {(module === "" ? allPosts : posts).map((post: Post) => (
+          <div
+            key={post.id}
+            className="border-secondary_200 border rounded-lg shadow-md p-4 mb-4 flex-wrap"
+          >
+            <div className="card-content">
+              <h3 className="text-xl font-bold mb-2">{post.title}</h3>
+              <p className="text-gray-400 mb-2">{post.description}</p>
+              <a
+                href={post.link}
+                className="text-blue-500 hover:underline mb-2 max-w-fit"
+                style={{ wordBreak: "break-all" }}
+              >
+                {cleanURL(post.link)}
+              </a>
+              <p className="text-gray-600 text-sm">
+                {new Date(post.created_at).toLocaleDateString("fr-FR", {
+                  hour: "numeric",
+                  minute: "numeric",
+                  hour12: false,
+                })}
+              </p>
+              <p className="text-gray-500">{post.module}</p>
+              <h3 className="text-gray-500">
+                Par : {findProfilName(post.user_id)}
+              </h3>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );  
 }
 export default GetAllPost;
