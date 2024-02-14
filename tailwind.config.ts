@@ -21,6 +21,9 @@ const config: Config = {
       four_400: '#f9cf16',
       black: '#000',
       white: '#fff',
+      post_title: '#FDE767',
+      post_gray: '#C7C8CC',
+      post_link: '#537FE7',
     }
   },
   plugins: [
