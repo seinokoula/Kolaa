@@ -116,7 +116,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const handleSignOut = async () => {
     const { error } = await supabase.auth.signOut();
     if (error) console.log('Error logging out:', error.message);
-    else alert('Logged out!');
+    else {alert('Logged out!')
+    window.location.reload();
+  };
   }
 
   const checkAuth = async () => {
