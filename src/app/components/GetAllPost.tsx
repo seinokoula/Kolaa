@@ -160,7 +160,7 @@ function GetAllPost({ searchTerm }: GetAllPostProps) {
                                     className="text-post_link hover:underline max-w-fit"
                                     style={{ wordBreak: "break-all" }}
                                 >
-                                    {post.link}
+                                    {cleanURL(post.link)}
                                 </a>
                                 <p className="text-gray-500">{post.module}</p>
                                 <h3 className="text-post_gray">
