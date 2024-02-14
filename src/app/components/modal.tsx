@@ -7,9 +7,13 @@ import { CheckIcon } from '@heroicons/react/24/outline'
 export default function Example() {
     const [open, setOpen] = useState(true)
 
+   const handleCLose = () => {
+        setOpen(false);
+        window.location.href = "/"
+    }
     return (
         <Transition.Root show={open} as={Fragment}>
-            <Dialog as="div" className="relative z-10" onClose={setOpen}>
+            <Dialog as="div" className="relative z-10" onClose={handleCLose}>
                 <Transition.Child
                     as={Fragment}
                     enter="ease-out duration-300"
@@ -40,13 +44,9 @@ export default function Example() {
                                     </div> */}
                                     <div className="text-center">
                                         <Dialog.Title as="h3" className="text-base text-black font-semibold leading-6 text-gray-900">
-                                            Payment successful
+                                           Connexion Reussi !
                                         </Dialog.Title>
-                                        <div className="mt-2">
-                                            <p className="text-sm text-black">
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur amet labore.
-                                            </p>
-                                        </div>
+
                                     </div>
                                 </div>
                                 {/* <div className="mt-5 sm:mt-6">

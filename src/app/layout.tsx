@@ -67,7 +67,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const handleSignOut = async () => {
     const { error } = await supabase.auth.signOut();
     if (error) console.log('Error logging out:', error.message);
-    else alert('Logged out!');
+    else {alert('Logged out!')
+    window.location.reload();
+  };
   }
 
   const checkAuth = async () => {
@@ -116,7 +118,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 </div>
                 <div className="flex gap-x-4">
                   {email ? (
-                    <Link href="login" className="text-sm font-semibold leading-6 py-2" onClick={handleSignOut}>
+                    <Link href="login" className="text-sm font-semibold leading-6 border-secondary_200 border-2 rounded-md px-3 py-2" onClick={handleSignOut}>
                       Log Out
                     </Link>
                   ) : (
@@ -129,7 +131,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                       </Link>
                     </>
                   )}
-                  <p className='py-2'>{email}</p>
                 </div>
               </nav>
               <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
