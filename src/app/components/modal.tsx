@@ -1,15 +1,19 @@
 'use client';
 
-import { Fragment, useState } from 'react'
-import { Dialog, Transition } from '@headlessui/react'
-import { CheckIcon } from '@heroicons/react/24/outline'
+import { Dialog, Transition } from '@headlessui/react';
+import { Fragment, useState } from 'react';
 
-export default function Example() {
+interface ModalProps {
+    modalText: string
+    locationHref: string
+}
+
+export default function Example({modalText,locationHref}: ModalProps) {
     const [open, setOpen] = useState(true)
 
    const handleCLose = () => {
         setOpen(false);
-        window.location.href = "/"
+        window.location.href = locationHref
     }
     return (
         <Transition.Root show={open} as={Fragment}>
@@ -44,7 +48,7 @@ export default function Example() {
                                     </div> */}
                                     <div className="text-center">
                                         <Dialog.Title as="h3" className="text-base text-black font-semibold leading-6 text-gray-900">
-                                           Connexion Reussi !
+                                           {modalText}
                                         </Dialog.Title>
 
                                     </div>
