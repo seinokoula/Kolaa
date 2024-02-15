@@ -62,7 +62,13 @@ function PostForm(_props: any) {
       console.log(error);
     } else {
       console.log(data);
-      alert("Post created successfully");
+        // Clear the form fields
+        setDescription("");
+        setTitle("");
+        setLink("");
+        setModule("");
+        alert("Post created successfully");
+        window.location.reload();
     }
   };
 
@@ -79,7 +85,9 @@ function PostForm(_props: any) {
             onChange={(event) => setModule(event.target.value)}
             value={module}
           >
-            <option value="">Select a Module</option>
+            <option value="">All</option>
+            <option disabled value="">
+              -------</option>
             {modulesList.map((module: Module) => (
               <option key={module.id} value={module.module}>
                 {module.module}
