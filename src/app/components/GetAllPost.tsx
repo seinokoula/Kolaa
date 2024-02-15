@@ -186,11 +186,16 @@ function GetAllPost({ searchTerm }: GetAllPostProps) {
                                 <p className="text-gray-400 mb-2">{post.description}</p>
                                 <a
                                     href={post.link}
-                                    className="text-blue-500 hover:underline mb-2 max-w-fit"
+                                    className="text-post_link hover:underline max-w-fit"
                                     style={{ wordBreak: "break-all" }}
                                 >
-                                    {post.link}
+                                                                        {cleanURL(post.link)}
+
                                 </a>
+                                    <p className="text-gray-500">{post.module}</p>
+                                    <h3 className="text-post_gray">
+                                        Par : {findProfilName(post.user_id)}
+                                    </h3>
                                 <p className="text-gray-600 text-sm">
                                     {new Date(post.created_at).toLocaleDateString("fr-FR", {
                                         hour: "numeric",
@@ -198,10 +203,6 @@ function GetAllPost({ searchTerm }: GetAllPostProps) {
                                         hour12: false,
                                     })}
                                 </p>
-                                <p className="text-gray-500">{post.module}</p>
-                                <h3 className="text-gray-500">
-                                    Par : {findProfilName(post.user_id)}
-                                </h3>
                             </div>
                         </div>
                     ))}
