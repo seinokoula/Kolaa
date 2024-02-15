@@ -1,12 +1,7 @@
 'use client';
 
-import './globals.css';
-import { animate, motion, scroll } from 'framer-motion';
-import { Fragment, JSX, SVGProps, useState } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { Dialog, Disclosure, Popover, Transition, Menu } from '@headlessui/react';
-import { ThemeProvider, useTheme } from 'next-themes';
+import { Dialog, Menu, Popover } from '@headlessui/react';
+import { PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid';
 import {
   ArrowPathIcon,
   Bars3Icon,
@@ -15,9 +10,14 @@ import {
   FingerPrintIcon,
   SquaresPlusIcon,
   XMarkIcon,
-} from '@heroicons/react/24/outline'
-import { PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid';
+} from '@heroicons/react/24/outline';
+import { ThemeProvider } from 'next-themes';
+import Image from 'next/image';
+import Link from 'next/link';
+import { JSX, SVGProps, useState } from 'react';
 import { supabase } from '../../src/app/components/Server/supabase';
+import './globals.css';
+import Modal from './components/modal';
 
 const navigation = {
   company: [
@@ -63,12 +63,13 @@ function classNames(...classes: string[]) {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [email, setEmail] = useState<string | undefined>('');
+  const [isLogout, setIsLogout] = useState(false);
 
   const handleSignOut = async () => {
     const { error } = await supabase.auth.signOut();
     if (error) console.log('Error logging out:', error.message);
-    else {alert('Logged out!')
-    window.location.reload();
+    else {
+    setIsLogout(true);
   };
   }
 
@@ -88,6 +89,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <ThemeProvider enableSystem={true} attribute="class">
           <div>
+          {isLogout && <Modal modalText={'Vous etes deconnecté !'} locationHref='/login' />}
+
             <header className="">
               <nav className="mx-auto flex max-w-7xl items-center justify-between relative  px-6 py-12 lg:px-16" aria-label="Global">
                 <div className="flex">
