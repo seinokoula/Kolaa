@@ -44,7 +44,6 @@ const faqs = [
 export default function Example() {
     return (
         <div className="">
-            <Modal />
             <div className="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:px-8">
                 <h2 className="text-4xl font-bold leading-10 tracking-tight ">FAQ</h2>
                 <p className="mt-6 max-w-full text-base leading-7">

@@ -89,7 +89,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <ThemeProvider enableSystem={true} attribute="class">
           <div>
-          {isLogout && <Modal modalText={'Vous etes deconnecté !'} locationHref='/login' />}
+          {isLogout && <Modal modalText={'Vous etes deconnecté !'} locationHref={'/login'} />}
 
             <header className="">
               <nav className="mx-auto flex max-w-7xl items-center justify-between relative  px-6 py-12 lg:px-16" aria-label="Global">

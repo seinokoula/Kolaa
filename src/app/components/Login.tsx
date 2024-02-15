@@ -40,7 +40,7 @@ export default function LoginPage() {
 
   return (
     <div className="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:px-8">
-      {isConnected && <Modal modalText={'Connexion Reussi !'} locationHref="/" />}
+      {isConnected && <Modal modalText={'Connexion Reussi !'} locationHref={"/"} />}
       <h2 className="text-4xl font-bold leading-10 tracking-tight">Login</h2>
       <div className="pt-12 pb-8 mb-4">
         {errorLogin && (
