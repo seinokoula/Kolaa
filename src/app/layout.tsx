@@ -18,6 +18,7 @@ import { JSX, SVGProps, useState } from 'react';
 import { supabase } from '../../src/app/components/Server/supabase';
 import './globals.css';
 import Modal from './components/modal';
+import { CSPostHogProvider } from './providers'
 
 const navigation = {
   company: [{ name: "Faq", href: "https://kolaa.vercel.app/faq" }],
@@ -83,6 +84,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html>
       <body>
+      <CSPostHogProvider>
         <ThemeProvider enableSystem={true} attribute="class">
           <div>
             {isLogout && <Modal modalText={'Vous etes deconnecté !'} locationHref={'/login'} />}
@@ -267,6 +269,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </footer>
           </div>
         </ThemeProvider>
+        </CSPostHogProvider>
       </body>
     </html>
   );
