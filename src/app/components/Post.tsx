@@ -73,9 +73,9 @@ function PostForm(_props: any) {
   };
 
   return (
-    <div className="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:px-8">
+    <div className="mx-auto max-w-7xl py-16 sm:py-24">
       <h2 className="text-4xl font-bold leading-10 tracking-tight ">
-        Create a Post
+        Créer une publication
       </h2>
       <form onSubmit={handleSubmit} className="pt-12 pb-8 mb-4">
         <div className="mb-4">
@@ -85,7 +85,7 @@ function PostForm(_props: any) {
             onChange={(event) => setModule(event.target.value)}
             value={module}
           >
-            <option value="">All</option>
+            <option value="">Tout</option>
             <option disabled value="">
               -------</option>
             {modulesList.map((module: Module) => (
@@ -96,9 +96,9 @@ function PostForm(_props: any) {
           </select>
         </div>
         <div className="mb-4">
-          <label className="block text-xl text-left mb-2">Title:</label>
+          <label className="block text-xl text-left mb-2">Titre:</label>
           <textarea
-            placeholder="Title"
+            placeholder="titre"
             value={title}
             onChange={(event) => setTitle(event.target.value)}
             className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
@@ -115,10 +115,10 @@ function PostForm(_props: any) {
         </div>
 
         <div className="mb-4">
-          <label className="block text-xl text-left mb-2">Link:</label>
+          <label className="block text-xl text-left mb-2">Lien:</label>
           <input
             type="text"
-            placeholder="Link"
+            placeholder="Lien"
             value={link}
             onChange={(event) => setLink(event.target.value)}
             className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
@@ -128,7 +128,7 @@ function PostForm(_props: any) {
           type="submit"
           className="inline-block text-black p-4 text-lg font-medium text-indigo-600 bg-primary_300 border border-indigo-600 rounded-lg shadow-2xl mt-6 hover:bg-indigo-600 hover:text-black hover:shadow-none"
         >
-          Submit
+          Envoyée
         </button>
       </form>
     </div>

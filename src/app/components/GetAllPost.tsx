@@ -132,7 +132,7 @@ function GetAllPost({ searchTerm }: GetAllPostProps) {
                 onChange={(event) => setModule(event.target.value)}
                 value={module}
             >
-                <option value="">All</option>
+                <option value="">Tout</option>
                 <option disabled value="">
                     -------
                 </option>

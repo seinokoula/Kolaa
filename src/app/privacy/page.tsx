@@ -5,8 +5,8 @@ import { useState } from "react";
 export default function Example() {
 
   return (
-    <div className="flex flex-col gap-2 ">
-      <h2 className="text-xl" >
+    <div className="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:px-8">
+      <h2 className="text-4xl font-bold leading-10 tracking-tight mb-8" >
         Respect de la vie privée du contenu d&apos;un site web et d&apos;une
         application de médias sociaux
       </h2>

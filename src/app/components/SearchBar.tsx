@@ -46,7 +46,7 @@ const Example: FC<SearchBarProps> = ({ setSearchTermForPosts }) => {
         className="peer h-12 w-full text-sm text-white pr-2 rounded-full bg-black border border-primary_300"
         type="text"
         id="search"
-        placeholder="Search something.."
+        placeholder="Cherchez un post..."
         onBlurCapture={() => {
           if (search) {
             console.log(search + " blur");

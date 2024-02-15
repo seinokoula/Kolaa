@@ -209,7 +209,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <h2 id="footer-heading" className="sr-only">
                 Footer
               </h2>
-              <div className="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
+              <div className="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:px-16">
                 <div className="xl:grid xl:grid-cols-3 xl:gap-8">
                   <div className="space-y-8">
                     <Image
@@ -220,7 +220,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                       alt="Company name"
                     />
                     <p className="text-sm leading-6">
-                    Pour voir votre nouvelle veille technologique.
+                    Votre nouvelle veille technologique
                     </p>
                     <div className="flex space-x-6">
                       {navigation.social.map((item) => (
@@ -261,7 +261,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   </div>
                 </div>
                 <div className="mt-16 border-t border-secondary_200 pt-8 sm:mt-20 lg:mt-24">
-                  <p className="text-xs leading-5 text-gray-500">&copy; 2024 Kalo, Inc. All rights reserved.</p>
+                  <p className="text-xs leading-5 text-gray-500">&copy; 2024 Kalo, Inc. Tout droits réservés</p>
                 </div>
               </div>
             </footer>
