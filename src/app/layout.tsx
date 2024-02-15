@@ -21,7 +21,7 @@ import Modal from './components/modal';
 
 const navigation = {
   company: [
-    { name: 'Faq', href: '#' },
+    { name: 'Faq', href: 'https://kolaa.vercel.app/faq' },
   ],
   legal: [
     { name: 'Content privacy', href: '#' },
