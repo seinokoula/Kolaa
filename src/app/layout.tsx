@@ -20,16 +20,12 @@ import './globals.css';
 import Modal from './components/modal';
 
 const navigation = {
-  company: [
-    { name: 'Faq', href: 'https://kolaa.vercel.app/faq' },
-  ],
-  legal: [
-    { name: 'Content privacy', href: '#' },
-  ],
+  company: [{ name: "Faq", href: "https://kolaa.vercel.app/faq" }],
+  legal: [{ name: "Content privacy", href: "https://kolaa.vercel.app/privacy" }],
   social: [
     {
-      name: 'GitHub',
-      href: 'https://github.com/seinokoula/open_new_teck_a4',
+      name: "GitHub",
+      href: "https://github.com/seinokoula/open_new_teck_a4",
       icon: (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path
@@ -41,8 +37,8 @@ const navigation = {
       ),
     },
     {
-      name: 'YouTube',
-      href: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+      name: "YouTube",
+      href: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
       icon: (props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path
@@ -54,7 +50,7 @@ const navigation = {
       ),
     },
   ],
-}
+};
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
