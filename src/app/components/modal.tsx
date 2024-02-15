@@ -8,10 +8,10 @@ interface ModalProps {
     locationHref: string
 }
 
-export default function Example({modalText,locationHref}: ModalProps) {
+export default function Example({ modalText, locationHref }: ModalProps) {
     const [open, setOpen] = useState(true)
 
-   const handleCLose = () => {
+    const handleCLose = () => {
         setOpen(false);
         window.location.href = locationHref
     }
@@ -48,7 +48,7 @@ export default function Example({modalText,locationHref}: ModalProps) {
                                     </div> */}
                                     <div className="text-center">
                                         <Dialog.Title as="h3" className="text-base text-black font-semibold leading-6 text-gray-900">
-                                           {modalText}
+                                            {modalText}
                                         </Dialog.Title>
 
                                     </div>

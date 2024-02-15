@@ -8,16 +8,16 @@ const AuthContext = createContext({})
 export const AuthContextProvider = ({ children }: { children: React.ReactNode }) => {
     const [user, setUser] = useState(false)
     const onAuthStateChange = async () => {
-    try {
-        const {
-            data: { user },
-        } = await supabase.auth.getUser();
-        if (user) {
-            setUser(!!user);
-        }   
-    } catch (error) {
-        console.log(error);
-        } finally {}
+        try {
+            const {
+                data: { user },
+            } = await supabase.auth.getUser();
+            if (user) {
+                setUser(!!user);
+            }
+        } catch (error) {
+            console.log(error);
+        } finally { }
     }
 
     useEffect(() => {
@@ -25,7 +25,7 @@ export const AuthContextProvider = ({ children }: { children: React.ReactNode })
     }, []);
 
     return (
-    <AuthContext.Provider value={{ user }}>{children}</AuthContext.Provider>    
+        <AuthContext.Provider value={{ user }}>{children}</AuthContext.Provider>
     )
 }
 

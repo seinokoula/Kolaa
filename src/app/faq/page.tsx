@@ -47,7 +47,7 @@ export default function Example() {
             <div className="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:px-8">
                 <h2 className="text-4xl font-bold leading-10 tracking-tight ">FAQ</h2>
                 <p className="mt-6 max-w-full text-base leading-7">
-                Vous saurez comment utiliser l&apos;application, le but et quel est le but de
+                    Vous saurez comment utiliser l&apos;application, le but et quel est le but de
                     Et vous saurez tout sur l&apos;application.
                 </p>
                 <div className="mt-12">

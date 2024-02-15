@@ -62,13 +62,13 @@ function PostForm(_props: any) {
       console.log(error);
     } else {
       console.log(data);
-        // Clear the form fields
-        setDescription("");
-        setTitle("");
-        setLink("");
-        setModule("");
-        alert("Post created successfully");
-        window.location.reload();
+      // Clear the form fields
+      setDescription("");
+      setTitle("");
+      setLink("");
+      setModule("");
+      alert("Post created successfully");
+      window.location.reload();
     }
   };
 

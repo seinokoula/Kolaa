@@ -65,8 +65,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     const { error } = await supabase.auth.signOut();
     if (error) console.log('Error logging out:', error.message);
     else {
-    setIsLogout(true);
-  };
+      setIsLogout(true);
+    };
   }
 
   const checkAuth = async () => {
@@ -85,7 +85,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <ThemeProvider enableSystem={true} attribute="class">
           <div>
-          {isLogout && <Modal modalText={'Vous etes deconnecté !'} locationHref={'/login'} />}
+            {isLogout && <Modal modalText={'Vous etes deconnecté !'} locationHref={'/login'} />}
 
             <header className="">
               <nav className="mx-auto flex max-w-7xl items-center justify-between relative  px-6 py-12 lg:px-16" aria-label="Global">
@@ -204,7 +204,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 </Dialog.Panel>
               </Dialog>
             </header>
-              <main data-barba="container" data-barba-namespace="basic" className="flex-auto md:mx-16 lg:mx-36">{children}</main>
+            <main data-barba="container" data-barba-namespace="basic" className="flex-auto md:mx-16 lg:mx-36">{children}</main>
             <footer aria-labelledby="footer-heading">
               <h2 id="footer-heading" className="sr-only">
                 Footer
@@ -220,7 +220,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                       alt="Company name"
                     />
                     <p className="text-sm leading-6">
-                    Votre nouvelle veille technologique
+                      Votre nouvelle veille technologique
                     </p>
                     <div className="flex space-x-6">
                       {navigation.social.map((item) => (

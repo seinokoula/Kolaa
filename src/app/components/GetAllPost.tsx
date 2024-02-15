@@ -156,6 +156,7 @@ function GetAllPost({ searchTerm }: GetAllPostProps) {
                                 <h3 className="text-xl font-bold mb-2 text-post_title">{post.title}</h3>
                                 <p className="text-gray-400 mb-2">{post.description}</p>
                                 <a
+                                    target="_blank"
                                     href={post.link}
                                     className="text-post_link hover:underline max-w-fit"
                                     style={{ wordBreak: "break-all" }}
@@ -185,17 +186,18 @@ function GetAllPost({ searchTerm }: GetAllPostProps) {
                                 <h3 className="text-xl font-bold mb-2 text-post_title">{post.title}</h3>
                                 <p className="text-gray-400 mb-2">{post.description}</p>
                                 <a
+                                    target="_blank"
                                     href={post.link}
                                     className="text-post_link hover:underline max-w-fit"
                                     style={{ wordBreak: "break-all" }}
                                 >
-                                                                        {cleanURL(post.link)}
+                                    {cleanURL(post.link)}
 
                                 </a>
-                                    <p className="text-gray-500">{post.module}</p>
-                                    <h3 className="text-post_gray">
-                                        Par : {findProfilName(post.user_id)}
-                                    </h3>
+                                <p className="text-gray-500">{post.module}</p>
+                                <h3 className="text-post_gray">
+                                    Par : {findProfilName(post.user_id)}
+                                </h3>
                                 <p className="text-gray-600 text-sm">
                                     {new Date(post.created_at).toLocaleDateString("fr-FR", {
                                         hour: "numeric",
